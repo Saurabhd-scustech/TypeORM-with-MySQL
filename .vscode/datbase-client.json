@@ -1,0 +1,44 @@
+{
+    "database.connections": {
+        "1643829116632": {
+            "host": "localhost",
+            "dbPath": "",
+            "port": "3306",
+            "user": "root",
+            "authType": "default",
+            "password": "Srdx@//97",
+            "encoding": "utf8",
+            "clientKeyPath": null,
+            "clientCertPath": null,
+            "caPath": null,
+            "database": "mydb",
+            "useSSL": false,
+            "usingSSH": false,
+            "showHidden": false,
+            "includeDatabases": null,
+            "dbType": "MySQL",
+            "encrypt": true,
+            "isCluster": false,
+            "connectionUrl": "",
+            "srv": false,
+            "esAuth": "none",
+            "global": false,
+            "key": "1643829116632",
+            "timezone": "+00:00",
+            "ssh": {
+                "host": "",
+                "privateKeyPath": "C:\\Users\\duryo\\.ssh\\id_rsa",
+                "port": 22,
+                "username": "root",
+                "type": "password",
+                "connectTimeout": 10000,
+                "algorithms": {
+                    "cipher": []
+                }
+            },
+            "name": "mysql",
+            "connectionKey": "database.connections",
+            "hideSystemSchema": false
+        }
+    }
+}
