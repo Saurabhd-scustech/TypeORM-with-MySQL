@@ -5,14 +5,16 @@
   "main": "./dist/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./dist/server.js"
+    "dev": "nodemon ./dist/server.js",
+    "typeorm": "node --loader ts-node/esm ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "express": "^4.17.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.5.0"
   },
   "dependencies": {
     "@types/dotenv": "^8.2.0",
@@ -22,8 +24,8 @@
     "dotenv": "^15.0.0",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
-    "ts-node": "^10.4.0",
     "typeorm": "^0.2.41",
+    "typeorm-cli": "^1.0.7",
     "typescript": "^4.5.5"
   }
 }

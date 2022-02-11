@@ -9,29 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Book = void 0;
+exports.Category = void 0;
 const typeorm_1 = require("typeorm");
-const entity_pages_1 = require("./entity.pages");
-let Book = class Book {
+const Ouestions_1 = require("./Ouestions");
+let Category = class Category {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Book.prototype, "id", void 0);
+], Category.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Book.prototype, "book_name", void 0);
+], Category.prototype, "category", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Book.prototype, "book_author", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => entity_pages_1.Pages, pages => pages.book),
-    (0, typeorm_1.JoinColumn)({ name: "Pages_ID" }),
+    (0, typeorm_1.ManyToMany)(() => Ouestions_1.Questions, questions => questions.category),
     __metadata("design:type", Array)
-], Book.prototype, "pages", void 0);
-Book = __decorate([
+], Category.prototype, "questions", void 0);
+Category = __decorate([
     (0, typeorm_1.Entity)()
-], Book);
-exports.Book = Book;
+], Category);
+exports.Category = Category;

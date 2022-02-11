@@ -23,15 +23,16 @@ __decorate([
     __metadata("design:type", Number)
 ], Pages.prototype, "page_number", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Pages.prototype, "page_text", void 0);
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], Pages.prototype, "created_at", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Pages.prototype, "book_id", void 0);
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], Pages.prototype, "updated_at", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => entity_book_1.Book, book => book.pages),
+    (0, typeorm_1.ManyToOne)(() => entity_book_1.Book, books => books.pages),
+    (0, typeorm_1.JoinColumn)({ name: "Book_ID" }),
     __metadata("design:type", entity_book_1.Book)
 ], Pages.prototype, "book", void 0);
 Pages = __decorate([

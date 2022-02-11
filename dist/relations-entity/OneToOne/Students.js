@@ -9,29 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Book = void 0;
+exports.Student = void 0;
 const typeorm_1 = require("typeorm");
-const entity_pages_1 = require("./entity.pages");
-let Book = class Book {
+const College_1 = require("./College");
+let Student = class Student {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ type: "int" }),
+    __metadata("design:type", String)
+], Student.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "varchar", length: 255, unique: true, nullable: false }),
+    __metadata("design:type", String)
+], Student.prototype, "name", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "varchar", length: 255, nullable: false }),
     __metadata("design:type", Number)
-], Book.prototype, "id", void 0);
+], Student.prototype, "age", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Book.prototype, "book_name", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Book.prototype, "book_author", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => entity_pages_1.Pages, pages => pages.book),
-    (0, typeorm_1.JoinColumn)({ name: "Pages_ID" }),
-    __metadata("design:type", Array)
-], Book.prototype, "pages", void 0);
-Book = __decorate([
+    (0, typeorm_1.OneToOne)(() => College_1.College, college => college.student),
+    (0, typeorm_1.JoinColumn)({ name: "CollegeID" }),
+    __metadata("design:type", College_1.College)
+], Student.prototype, "college", void 0);
+Student = __decorate([
     (0, typeorm_1.Entity)()
-], Book);
-exports.Book = Book;
+], Student);
+exports.Student = Student;

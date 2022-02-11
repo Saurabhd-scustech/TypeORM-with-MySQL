@@ -12,7 +12,7 @@ export class Student {
     @Column({type: "varchar", length: 255, nullable: false})
     age: number;
 
-    @OneToOne(() => College)
+    @OneToOne(() => College, college=> college.student)
     @JoinColumn({name: "CollegeID"})
-    CollegeID: College;
+    college: College;
 }

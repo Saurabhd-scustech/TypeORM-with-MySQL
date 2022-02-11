@@ -12,8 +12,12 @@ const User_1 = require("./entity/User");
 const Post_1 = require("./entity/Post");
 const Content_1 = require("./entity/Content");
 const Concrete_1 = require("./entity/Concrete");
-const Students_1 = require("./relations-entity/Students");
-const College_1 = require("./relations-entity/College");
+const Students_1 = require("./relations-entity/OneToOne/Students");
+const College_1 = require("./relations-entity/OneToOne/College");
+const entity_book_1 = require("./relations-entity/OneToMany/entity.book");
+const entity_pages_1 = require("./relations-entity/OneToMany/entity.pages");
+const Ouestions_1 = require("./relations-entity/ManyToMany/Ouestions");
+const Category_1 = require("./relations-entity/ManyToMany/Category");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const { PORT } = process.env;
@@ -32,8 +36,12 @@ app.use((err, req, res, next) => {
     "username": "root",
     "password": "Srdx@//97",
     "database": "mydb",
-    "synchronize": true,
     "logging": true,
-    "entities": [User_1.User, Content_1.Content, Photos_1.Photos, Post_1.Post, Concrete_1.Concrete, Students_1.Student, College_1.College],
+    "entities": [User_1.User, Content_1.Content, Photos_1.Photos, Post_1.Post, Concrete_1.Concrete, Students_1.Student, College_1.College, entity_book_1.Book, entity_pages_1.Pages, Ouestions_1.Questions, Category_1.Category],
+    "migrationsTableName": "migrated_table",
+    "migrations": ["./migration/*.ts"],
+    "cli": {
+        migrationsDir: "src/migration/"
+    }
 }).then(() => console.log(`Connected to MySQL Database`)).catch((err) => console.log(err.message));
 app.listen(PORT, () => console.log(`server up and running on port number: ${PORT}`));

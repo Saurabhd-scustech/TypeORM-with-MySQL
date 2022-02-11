@@ -1,4 +1,4 @@
-import { PrimaryGeneratedColumn, Column, Entity, ManyToOne } from "typeorm";
+import { PrimaryGeneratedColumn, Column, Entity, CreateDateColumn, UpdateDateColumn, JoinColumn, ManyToOne } from "typeorm";
 import { Book } from "./entity.book";
 
 
@@ -10,13 +10,16 @@ export class Pages {
     @Column()
     page_number: number;
 
-    @Column()
-    page_text: string;
+    @CreateDateColumn()
+    created_at: Date;
 
-    @Column()
-    book_id: number;
+    @UpdateDateColumn()
+    updated_at: Date
 
-    @ManyToOne(() => Book, book => book.pages)
+    @ManyToOne(() => Book, books => books.pages)
+    @JoinColumn({ name: "Book_ID" })
     book: Book;
+        
+    
 
 }

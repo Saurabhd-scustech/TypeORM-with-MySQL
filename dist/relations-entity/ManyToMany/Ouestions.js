@@ -9,29 +9,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Book = void 0;
+exports.Questions = void 0;
 const typeorm_1 = require("typeorm");
-const entity_pages_1 = require("./entity.pages");
-let Book = class Book {
+const Category_1 = require("./Category");
+let Questions = class Questions {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Book.prototype, "id", void 0);
+], Questions.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Book.prototype, "book_name", void 0);
+], Questions.prototype, "text", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Book.prototype, "book_author", void 0);
+], Questions.prototype, "title", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => entity_pages_1.Pages, pages => pages.book),
-    (0, typeorm_1.JoinColumn)({ name: "Pages_ID" }),
+    (0, typeorm_1.ManyToMany)(() => Category_1.Category, categories => categories.questions),
+    (0, typeorm_1.JoinTable)({
+        name: "quetions and category",
+        joinColumn: {
+            name: "question",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "Category",
+            referencedColumnName: "id"
+        }
+    }),
     __metadata("design:type", Array)
-], Book.prototype, "pages", void 0);
-Book = __decorate([
+], Questions.prototype, "category", void 0);
+Questions = __decorate([
     (0, typeorm_1.Entity)()
-], Book);
-exports.Book = Book;
+], Questions);
+exports.Questions = Questions;

@@ -12,8 +12,8 @@ export class Book{
     @Column()
     book_author: string;
 
-    @OneToMany(() => Pages, pages => pages.book_id)
-    @JoinColumn({ name: "book_id" })  
-    pages: Pages[]; 
+    @OneToMany(() => Pages, pages => pages.book)
+    @JoinColumn({name: "Pages_ID"})
+    pages: Pages[];
 
 }

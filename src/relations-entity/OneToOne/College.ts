@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
+import { Student } from "./Students";
 
 export enum Type_Of_College{ 
     G = "GRANTED",
@@ -18,4 +18,8 @@ export class College {
 
     @Column("enum", { enum: Type_Of_College })
     type: string;
+
+
+    @OneToOne(() => Student, student => student.college)
+    student: Student;
 }
